@@ -40,9 +40,21 @@ namespace Tanks // Note: actual namespace depends on the project name.
                 ));
             }
             bullets = new List<Vector4>(newBullets);
+
+            float arrowLength = 1;
             foreach (var bullet in bullets)
             {
-                Raylib.DrawTriangle(bullet.Z/bullet.Y);
+                Raylib.DrawTriangle
+                (
+                    new Vector2((float)
+                        Math.Cos
+                        (
+                            Math.Atan(bullet.Y/bullet.Z)
+                        )
+                        *arrowLength
+                    )
+                    
+                );
             }
         }
 
@@ -52,7 +64,7 @@ namespace Tanks // Note: actual namespace depends on the project name.
 
             while(!Raylib.WindowShouldClose())
             {
-                
+
             }
         }
     }
